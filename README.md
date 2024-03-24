@@ -12,7 +12,7 @@
 *student_grade_generator.*js is a program whose major task is to calculate an individual’s Net Salary by getting the inputs of basic salary and benefits. Calculate the payee (i.e. Tax), NHIFDeductions, NSSFDeductions, gross salary, and net salary.
 
 ## Installation
-You use git clone to be able to download the documents in the GitHub
+You use git clone into your local environment. o be able to download the documents in the GitHub. Navigate into its directory in the terminal, then run `code .` to pen the files in Visual Studio Code.
 
 ## Installation Requirements
 Git
