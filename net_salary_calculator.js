@@ -1,3 +1,6 @@
+const prompt  = require("prompt-sync")({sigint: true});
+
+
 //Getting inputs for Monthly Basic Salary and Monthly Contibution Benefits of the user
 let monthlyBasicSalary = parseInt(prompt("Enter your Monthly Basic Salary"));
 let monthlyContributionBenefit = parseInt(prompt("Enter your Monthly Contribution Benefit"));
@@ -12,7 +15,7 @@ while (isNaN(monthlyBasicSalary) || isNaN(monthlyContributionBenefit) || monthly
 let monthlyGrossSalary = monthlyBasicSalary + monthlyContributionBenefit;
 
 //Input for Personal Relief
-let personalRelief = parseInt(prompt("Enter your Personal Relief"));
+let personalRelief = 2400;
 
 //Validating Personal Relief input
 while (isNaN(personalRelief) || personalRelief < 0){
@@ -148,10 +151,10 @@ let netSalary = monthlyGrossSalary - taxPayable - nhifDeduction - employerContri
 
 //Output of the Results
 function outputResults(){
-alert("Your Gross Salary is " + monthlyGrossSalary)
-alert("Your Tax Payable is " + taxPayable)
-alert("Your NHIF Deduction is " + nhifDeduction)
-alert("Your NSSF Contibution is " + employerContribution)
-alert("Your Net Salary is " + netSalary)
+console.log("Your Gross Salary is " + monthlyGrossSalary)
+console.log("Your Tax Payable is " + taxPayable)
+console.log("Your NHIF Deduction is " + nhifDeduction)
+console.log("Your NSSF Contibution is " + employerContribution)
+console.log("Your Net Salary is " + netSalary)
 }
 outputResults()
