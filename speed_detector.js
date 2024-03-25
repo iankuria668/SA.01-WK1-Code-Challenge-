@@ -1,3 +1,6 @@
+//Declaring Prompt
+const prompt  = require("prompt-sync")({sigint: true});
+
 // Declaring constants
 const speedLimit = 70;
 const maxDemeritPoints = 12;
@@ -26,4 +29,4 @@ function checkDemeritPoints(){
 
 //Displaying the demerit points
 let display = checkDemeritPoints();
-alert(display)
+console.log(display)

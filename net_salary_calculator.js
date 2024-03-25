@@ -1,5 +1,5 @@
+//Declaring Prompt
 const prompt  = require("prompt-sync")({sigint: true});
-
 
 //Getting inputs for Monthly Basic Salary and Monthly Contibution Benefits of the user
 let monthlyBasicSalary = parseInt(prompt("Enter your Monthly Basic Salary"));
@@ -13,6 +13,9 @@ while (isNaN(monthlyBasicSalary) || isNaN(monthlyContributionBenefit) || monthly
 
 //Calculating Monthly Gross Salary
 let monthlyGrossSalary = monthlyBasicSalary + monthlyContributionBenefit;
+
+//Calculating Housing Levy
+const housingLevy = (0.015 * monthlyGrossSalary);
 
 //Input for Personal Relief
 let personalRelief = 2400;
@@ -45,7 +48,7 @@ function taxCalculator(monthlyTaxableIncome){
     let taxPayable = monthlyTaxableIncome * taxRate;
     return taxPayable;
 }
-let taxPayable = taxCalculator(monthlyTaxableIncome);
+let taxPayable = Math.round(taxCalculator(monthlyTaxableIncome));
 
 //Calculating NHIF Deductions
 let nhifCalculator = function(monthlyGrossSalary){
@@ -105,56 +108,60 @@ let nhifCalculator = function(monthlyGrossSalary){
 }
 let nhifDeduction = nhifCalculator(monthlyGrossSalary);
 
-//Calculating NSSF Deductions
-let Tier1 = "Tier1";
-let Tier2 = "Tier2";
-let pensionTier = prompt("Enter your pension tier");
-function nssfCalculator(monthlyGrossSalary, pensionTier){
-    let employerContribution;
-    if (pensionTier !== Tier1 & pensionTier !== Tier2){
-        alert("Please Enter a Valid Tier; Either Tier1 or Tier2")
-    } else if (pensionTier == Tier1 && monthlyGrossSalary <= 3000){
-        employerContribution = 180
-    } else if (pensionTier == Tier2 && monthlyGrossSalary <= 3000){
-        employerContribution = 0
-    } else if (pensionTier == Tier1 && monthlyGrossSalary >= 3000 && monthlyGrossSalary < 4500){
-        employerContribution = 270
-    } else if (pensionTier == Tier2 & monthlyGrossSalary >= 3000 && monthlyGrossSalary < 4500){
-        employerContribution = 0
-    } else if (pensionTier == Tier1 && monthlyGrossSalary >= 4500 && monthlyGrossSalary < 6000){
-        employerContribution = 360
-    } else if (pensionTier == Tier2 && monthlyGrossSalary >= 4500 && monthlyGrossSalary < 6000){
-        employerContribution = 0
-    } else if (pensionTier == Tier1 && monthlyGrossSalary >= 6000 && monthlyGrossSalary < 10000){
-        employerContribution = 360
-    } else if (pensionTier == Tier2 && monthlyGrossSalary >= 6000 && monthlyGrossSalary < 10000){
-        employerContribution = 240
-    } else if (pensionTier == Tier1 && monthlyGrossSalary >= 10000 && monthlyGrossSalary < 14000){
-        employerContribution = 360
-    } else if (pensionTier == Tier2 && monthlyGrossSalary >=10000 && monthlyGrossSalary < 14000){
-        employerContribution = 480
-    } else if (pensionTier == Tier1 && monthlyGrossSalary >= 14000 && monthlyGrossSalary < 18000){
-        employerContribution = 360
-    } else if (pensionTier == Tier2 && monthlyGrossSalary >= 14000 && monthlyGrossSalary < 18000){
-        employerContribution = 720
-    } else if (pensionTier == Tier1 && monthlyGrossSalary >= 18000){
-        employerContribution = 360
-    } else if (pensionTier == Tier2 && monthlyGrossSalary >= 18000){
-        employerContribution = 720
+//Declaring NSSF Tiers
+let pensionTier = prompt("Enter your pension tier (either Tier 1 or Tier 2)");
+
+// Validating pension  Tier
+while (pensionTier !== "Tier 1" && pensionTier !== "Tier 2"){
+    pensionTier = prompt("Enter your pension tier (either Tier 1 or Tier 2)");
     }
-    return employerContribution
+
+
+//Calculating NSSF Contribution
+function nssfCalculator(monthlyGrossSalary, pensionTier){
+    let employeeContribution;
+    if (pensionTier == "Tier 1" && monthlyGrossSalary <= 3000){
+        employeeContribution = 180
+    } else if (pensionTier == "Tier 2" && monthlyGrossSalary <= 3000){
+        employeeContribution = 0
+    } else if (pensionTier == "Tier 1" && monthlyGrossSalary >= 3000 && monthlyGrossSalary < 4500){
+        employeeContribution = 270
+    } else if ([pensionTier] == "Tier 2" & monthlyGrossSalary >= 3000 && monthlyGrossSalary < 4500){
+        employeeContribution = 0
+    } else if (pensionTier == "Tier 1" && monthlyGrossSalary >= 4500 && monthlyGrossSalary < 6000){tierCategorySeparator
+        employeeContribution = 360
+    } else if (pensionTier == "Tier 2" && monthlyGrossSalary >= 4500 && monthlyGrossSalary < 6000){
+        employeeContribution = 0
+    } else if (pensionTier == "Tier 1" && monthlyGrossSalary >= 6000 && monthlyGrossSalary < 10000){
+        employeeContribution = 360
+    } else if (pensionTier == "Tier 2" && monthlyGrossSalary >= 6000 && monthlyGrossSalary < 10000){
+        employeeContribution = 240
+    } else if (pensionTier == "Tier 1" && monthlyGrossSalary >= 10000 && monthlyGrossSalary < 14000){
+        employeeContribution = 360
+    } else if (pensionTier == "Tier 2" && monthlyGrossSalary >=10000 && monthlyGrossSalary < 14000){
+        employeeContribution = 480
+    } else if (pensionTier == "Tier 1" && monthlyGrossSalary >= 14000 && monthlyGrossSalary < 18000){
+        employeeContribution = 360
+    } else if (pensionTier == "Tier 2" && monthlyGrossSalary >= 14000 && monthlyGrossSalary < 18000){
+        employeeContribution = 720
+    } else if (pensionTier == "Tier 1" && monthlyGrossSalary >= 18000){
+        employeeContribution = 360
+    } else if (pensionTier == "Tier 2" && monthlyGrossSalary >= 18000){
+        employeeContribution = 720
+    }
+    return employeeContribution
 }
-let employerContribution = nssfCalculator(Tier1,Tier2);
+let employeeContribution = parseInt(nssfCalculator(monthlyGrossSalary, pensionTier));
 
 //Calculating Net Salary
-let netSalary = monthlyGrossSalary - taxPayable - nhifDeduction - employerContribution;
+let netSalary = monthlyGrossSalary - taxPayable - nhifDeduction - housingLevy - employeeContribution;
 
 //Output of the Results
 function outputResults(){
 console.log("Your Gross Salary is " + monthlyGrossSalary)
 console.log("Your Tax Payable is " + taxPayable)
 console.log("Your NHIF Deduction is " + nhifDeduction)
-console.log("Your NSSF Contibution is " + employerContribution)
+console.log("Your NSSF Contibution is " + employeeContribution)
 console.log("Your Net Salary is " + netSalary)
 }
 outputResults()

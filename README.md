@@ -16,12 +16,17 @@
 You use git clone into your local environment. o be able to download the documents in the GitHub. Navigate into its directory in the terminal, then run `code .` to pen the files in Visual Studio Code.
 
 ## Installation Requirements
-Git
+Gitrun `code .` to pen the files in Visual Studio Code.
 
+[ansi-regex](node_modules/ansi-regex)
+[prompt-sync](node_modules/prompt-sync)
+[strip-ansi](node_modules/strip-ansi)
 
 ### Installation instruction
 ```
 Git clone https://github.com/iankuria668/SA.01-WK1-Code-Challenge-.git
+run `code .` to pen the files in Visual Studio Code.
+open terminal and run npm install prompt-sync  to download the required packages
 
 ```
 

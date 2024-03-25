@@ -1,3 +1,6 @@
+//Declaring Prompt
+const prompt  = require("prompt-sync")({sigint: true});
+
 //Prompting user input
 let studentMarks = parseInt(prompt("Enter student marks"));
 let studentName = prompt("Enter student name");
@@ -6,9 +9,9 @@ let studentName = prompt("Enter student name");
 function inputStudentMarks(){
     if (studentMarks >= 0 && studentMarks <= 100 && !isNaN(studentMarks)){
         let grade = getGrade(studentMarks);
-        alert ("The grade of " + studentName + " is " + grade);
+        console.log ("The grade of " + studentName + " is " + grade);
     } else {
-        alert("Please enter a valid value between 0 and 100");
+        console.log("Please enter a valid value between 0 and 100");
     }
 }
 
