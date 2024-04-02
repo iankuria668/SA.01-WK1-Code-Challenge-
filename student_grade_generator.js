@@ -6,7 +6,7 @@ let studentMarks = parseInt(prompt("Enter student marks"));
 //Prompting student name input
 let studentName = prompt("Enter student name");
 
-// Verifying that student makrks are between 0 and 100
+// Verifying that student marks are between 0 and 100
 function inputStudentMarks(){
     if (studentMarks >= 0 && studentMarks <= 100 && !isNaN(studentMarks)){
         let grade = getGrade(studentMarks);
